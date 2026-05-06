@@ -1,0 +1,434 @@
+/**
+ * style.css — Feuille de style principale du site Oro Jackson
+ * 
+ * Design sobre et professionnel adapté à un projet universitaire.
+ * Palette : bleu marine (navy) + blanc + accents teal/or.
+ * 
+ * Organisation :
+ *   1. Variables CSS (couleurs, polices)
+ *   2. Reset et base
+ *   3. Topbar (navigation)
+ *   4. Contenu principal
+ *   5. Composants (cards, tables, badges, boutons, formulaires)
+ *   6. Pages spécifiques (accueil, connexion, attente)
+ *   7. Footer
+ *   8. Responsive
+ */
+
+/* ============================================================
+   1. VARIABLES CSS
+   ============================================================ */
+:root {
+    --navy:     #0B1D3A;
+    --deep:     #0F2B52;
+    --ocean:    #1565A8;
+    --teal:     #0E8A7D;
+    --gold:     #D4A843;
+    --vert:     #4CAF50;
+    --rouge:    #E85D4A;
+    --orange:   #FF9800;
+    --blanc:    #FFFFFF;
+    --fond:     #F5F3EE;
+    --carte:    #FFFFFF;
+    --texte:    #1A1A2E;
+    --gris:     #6B7280;
+    --bordure:  #E5E7EB;
+    --rayon:    10px;
+    --ombre:    0 2px 8px rgba(11, 29, 58, 0.07);
+    --police:   'Segoe UI', Arial, sans-serif;
+}
+
+
+/* ============================================================
+   2. RESET ET BASE
+   ============================================================ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--police);
+    background: var(--fond);
+    color: var(--texte);
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+a {
+    color: var(--ocean);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* ============================================================
+   3. TOPBAR (NAVIGATION)
+   ============================================================ */
+.topbar {
+    background: var(--navy);
+    padding: 0 20px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.topbar-logo {
+    color: var(--gold);
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.topbar-nav {
+    display: flex;
+    gap: 2px;
+    flex: 1;
+    overflow-x: auto;
+}
+
+.topbar-nav a {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: all 0.15s;
+}
+
+.topbar-nav a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    text-decoration: none;
+}
+
+.topbar-nav a.actif {
+    color: #fff;
+    background: var(--teal);
+}
+
+.topbar-droite {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.btn-deconnexion {
+    background: rgba(232, 93, 74, 0.15);
+    border: 1px solid rgba(232, 93, 74, 0.3);
+    color: #e07068;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.btn-deconnexion:hover {
+    background: rgba(232, 93, 74, 0.3);
+    text-decoration: none;
+}
+
+
+/* ============================================================
+   4. CONTENU PRINCIPAL
+   ============================================================ */
+.contenu {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 24px 20px;
+}
+
+.titre-page {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+}
+
+.sous-titre-page {
+    font-size: 13px;
+    color: var(--gris);
+    margin-bottom: 20px;
+}
+
+.entete-page {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.grille-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+.grille-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.grille-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+.ligne     { display: flex; gap: 10px; flex-wrap: wrap; }
+
+
+/* ============================================================
+   5. COMPOSANTS
+   ============================================================ */
+
+/* --- Cards --- */
+.carte {
+    background: var(--carte);
+    border-radius: var(--rayon);
+    padding: 16px;
+    box-shadow: var(--ombre);
+    margin-bottom: 14px;
+}
+
+.carte-titre {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gris);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+/* --- KPI (indicateurs) --- */
+.kpi {
+    position: relative;
+    overflow: hidden;
+}
+
+.kpi::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--teal);
+}
+
+.kpi-label   { font-size: 11px; color: var(--gris); text-transform: uppercase; }
+.kpi-valeur  { font-size: 26px; font-weight: 800; margin: 4px 0; }
+.kpi-unite   { font-size: 13px; color: var(--gris); }
+.kpi-statut  { font-size: 11px; font-weight: 600; }
+.statut-ok   { color: var(--vert); }
+.statut-warn { color: var(--orange); }
+.statut-crit { color: var(--rouge); }
+
+/* --- Tableaux --- */
+.tableau {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.tableau th {
+    background: var(--navy);
+    color: #fff;
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tableau td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--bordure);
+}
+
+.tableau tr:hover td {
+    background: rgba(14, 138, 125, 0.03);
+}
+
+/* --- Badges --- */
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge-capitaine     { background: rgba(212,168,67,0.2); color: var(--gold); }
+.badge-scientifique  { background: rgba(14,138,125,0.15); color: var(--teal); }
+.badge-second        { background: rgba(21,101,168,0.15); color: var(--ocean); }
+.badge-administrateur{ background: rgba(232,93,74,0.15); color: var(--rouge); }
+.badge-matelots      { background: rgba(107,114,128,0.15); color: var(--gris); }
+.badge-technicien    { background: rgba(156,39,176,0.1); color: #9C27B0; }
+.badge-pilotemaritime{ background: rgba(44,197,168,0.15); color: var(--teal); }
+.badge-opérateurdebord{background: rgba(255,152,0,0.15); color: var(--orange); }
+.badge-cuisinier     { background: rgba(232,93,74,0.1); color: var(--rouge); }
+
+/* --- Boutons --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: none;
+    transition: all 0.15s;
+}
+
+.btn-principal { background: var(--teal); color: #fff; }
+.btn-principal:hover { background: #0a7a6e; text-decoration: none; }
+.btn-navy      { background: var(--navy); color: #fff; }
+.btn-navy:hover{ background: var(--deep); text-decoration: none; }
+.btn-contour   { background: transparent; border: 1.5px solid var(--bordure); color: var(--texte); }
+.btn-contour:hover { border-color: var(--teal); color: var(--teal); text-decoration: none; }
+.btn-or        { background: var(--gold); color: var(--navy); }
+.btn-danger    { background: var(--rouge); color: #fff; }
+.btn-sm        { padding: 5px 10px; font-size: 11px; }
+
+/* --- Points d'état --- */
+.point       { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.point-vert  { background: var(--vert); }
+.point-rouge { background: var(--rouge); }
+.point-orange{ background: var(--orange); }
+.point-gris  { background: #CCC; }
+
+/* --- Barres de progression --- */
+.barre       { height: 7px; background: #EEF2F5; border-radius: 4px; overflow: hidden; margin-top: 4px; }
+.barre-fill  { height: 100%; border-radius: 4px; }
+.fill-vert   { background: var(--vert); }
+.fill-bleu   { background: var(--ocean); }
+.fill-rouge  { background: var(--rouge); }
+
+/* --- Alertes --- */
+.alerte {
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border-left: 4px solid;
+    font-size: 13px;
+}
+.alerte-critique { background: #FEF2F2; border-color: var(--rouge); }
+.alerte-warning  { background: #FFFBEB; border-color: var(--gold); }
+.alerte-info     { background: #F0F9FF; border-color: var(--ocean); }
+
+/* --- Porte / Écoutille --- */
+.porte {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--bordure);
+    background: #fff;
+    font-size: 12px;
+}
+.porte.ouverte {
+    border-color: rgba(232, 93, 74, 0.3);
+    background: #FFF5F5;
+}
+
+/* --- Formulaires --- */
+.form-groupe { margin-bottom: 14px; }
+.form-groupe label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.form-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--bordure);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    background: #FAFAFA;
+}
+.form-input:focus {
+    outline: none;
+    border-color: var(--teal);
+    background: #fff;
+}
+textarea.form-input { min-height: 120px; resize: vertical; }
+
+/* --- Onglets bateaux --- */
+.onglets-bateaux { display: flex; gap: 4px; margin-bottom: 14px; flex-wrap: wrap; }
+.onglet {
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1.5px solid var(--bordure);
+    background: #fff;
+    text-decoration: none;
+    color: var(--texte);
+}
+.onglet.actif { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+
+/* ============================================================
+   6. PAGES SPÉCIFIQUES
+   ============================================================ */
+
+/* --- Page d'accueil (hero) --- */
+.hero {
+    background: linear-gradient(135deg, var(--navy), var(--deep), var(--ocean));
+    border-radius: 14px;
+    padding: 50px 36px;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+}
+.hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; }
+.hero h1 span { color: var(--teal); }
+.hero p  { font-size: 14px; color: rgba(255,255,255,0.65); max-width: 440px; margin: 0 auto 20px; }
+
+/* --- Page de connexion --- */
+.carte-connexion {
+    max-width: 380px;
+    margin: 40px auto;
+    padding: 32px 28px;
+    text-align: center;
+}
+
+/* --- Page d'attente --- */
+.page-attente {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+
+/* ============================================================
+   7. FOOTER
+   ============================================================ */
+.pied-de-page {
+    text-align: center;
+    padding: 16px;
+    font-size: 11px;
+    color: var(--gris);
+    margin-top: 30px;
+}
+
+
+/* ============================================================
+   8. RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .grille-2, .grille-3, .grille-4 { grid-template-columns: 1fr; }
+    .topbar-nav { display: none; }
+    .hero { padding: 30px 20px; }
+    .hero h1 { font-size: 22px; }
+    .entete-page { flex-direction: column; }
+}
